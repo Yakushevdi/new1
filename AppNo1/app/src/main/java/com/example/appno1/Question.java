@@ -10,6 +10,7 @@ public class Question {
     }
 
     public int getQuestionResId() {
+
         return questionResId;
     }
 
@@ -18,10 +19,12 @@ public class Question {
     }
 
     public void setQuestionResId(int questionResId) {
+
         this.questionResId = questionResId;
     }
 
     public void setAnswerTrue(boolean answerTrue) {
+
         this.answerTrue = answerTrue;
     }
 }

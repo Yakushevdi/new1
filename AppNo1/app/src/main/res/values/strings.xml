@@ -3,10 +3,16 @@
     <string name="yes">ДА</string>
     <string name="no">НЕТ</string>
     <string name="question1">2+2=4</string>
-    <string name="question2">8-5=4</string>
-    <string name="question3">9-4=6</string>
-    <string name="question4">2+4=6</string>
-    <string name="question5">6-2=4</string>
+    <string name="question2">8–5=4</string>
+    <string name="question3">9–4=7</string>
+    <string name="question4">8+4=12</string>
+    <string name="question5">7–3=4</string>
     <string name="correct">Правильно</string>
     <string name="incorrect">Не правильно</string>
+    <string name="correct_answer">Правильный ответ</string>
+    <string name="incorrect_answer">Неправильный ответ</string>
+    <string name="show_answer">Показать ответ</string>
+    <string name="question">Вопрос</string>
+    <string name="usersAnswer">Ответ пользователя</string>
+    <string name="number">Номер вопроса</string>
 </resources>
