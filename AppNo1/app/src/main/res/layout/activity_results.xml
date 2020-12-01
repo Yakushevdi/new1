@@ -16,6 +16,7 @@
             android:id="@+id/listName"
             android:layout_width="match_parent"
             android:layout_height="52dp"
+            android:layout_gravity="center"
             android:text="Cписок ответов"
             android:textAlignment="gravity"
             android:textSize="18sp"
@@ -23,7 +24,6 @@
 
         <ListView
             android:id="@+id/resList"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="604dp"
             android:layout_marginTop="32dp">

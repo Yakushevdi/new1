@@ -51,11 +51,17 @@ public class MainActivity extends AppCompatActivity {
         yesBtn.setOnClickListener((view) ->  {//ожидание клика на кнопки ДА
             if (questions[questionIndex].isAnswerTrue()) {
                 Toast.makeText(MainActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
+                String string = getString(R.string.yes);
+                String string1= getString(questions[questionIndex].getQuestionResId());
+                String string2= getString(R.string.correct);
+                answers.add(string1+" - Ваш ответ: "+string+" Результат: "+string2);
             } else {
                 Toast.makeText(MainActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
+                String string = getString(R.string.yes);
+                String string1= getString(questions[questionIndex].getQuestionResId());
+                String string2= getString(R.string.incorrect);
+                answers.add(string1+" - Ваш ответ: "+string+" Результат: "+string2);
             }
-            String string = getString(R.string.yes);
-            answers.add(string);
             questionIndex ++;
             startResults();
         });//кнопка да
@@ -65,11 +71,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (questions[questionIndex].isAnswerTrue()) {
                     Toast.makeText(MainActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
+                    String string = getString(R.string.no);
+                    String string1= getString(questions[questionIndex].getQuestionResId());
+                    String string2= getString(R.string.incorrect);
+                    answers.add(string1+" - Ваш ответ: "+string+" Результат: "+string2);
                 } else {
                     Toast.makeText(MainActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
+                    String string = getString(R.string.no);
+                    String string1= getString(questions[questionIndex].getQuestionResId());
+                    String string2= getString(R.string.correct);
+                    answers.add(string1+" - Ваш ответ: "+string+" Результат: "+string2);
                 }
-                String string = getString(R.string.no);
-                answers.add(string);
                 questionIndex ++;
                 startResults();
             }
@@ -92,7 +104,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             Intent i = new Intent(MainActivity.this, ResultsActivity.class);
-            i.putStringArrayListExtra("result", answers);
+            i.putStringArrayListExtra("result", answers); // передает сохраненные ответы пользователя
+            Intent q = new Intent(MainActivity.this, ResultsActivity.class);
+            q.putExtra("questions", questions);
             startActivity(i);
         }
 

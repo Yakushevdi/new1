@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ResultsActivity extends AppCompatActivity {
-    private Bundle [] questions;
+    private int[] questions;
     private ArrayList<String> results;
     private TextView listName;
 
@@ -22,12 +22,12 @@ public class ResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_results);
 
         results = getIntent().getStringArrayListExtra("result");
+        questions = getIntent().getIntArrayExtra("questions");
 
-        ListView listView = (ListView)findViewById(R.id.resList);
         TextView textView = (TextView)findViewById(R.id.listName);
 
+        ListView listView = (ListView)findViewById(R.id.resList);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, results);
-
         listView.setAdapter(adapter);
 
 
