@@ -1,0 +1,33 @@
+package com.example.listofsmth;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class UserFragment extends Fragment {
+    private User user;
+    private TextView textView_UserName;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        user = new User();
+        user.setUserName("Ivan");
+        user.setUserLastName("Ivanov");
+
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){//открытие контейнера
+        View view = inflater.inflate(R.layout.fragmen_user,container,false);// отображение самого View на экране(открытие Фаргмента)
+        textView_UserName = view.findViewById(R.id.textView_UserName);
+        String userName = "Name "+user.getUserName()+"\n"+"LastName "+user.getUserLastName();
+        textView_UserName.setText(userName);
+        return view;
+
+    }
+
+
+}
