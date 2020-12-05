@@ -11,12 +11,14 @@ public class UserFragment extends Fragment {
     private User user;
     private TextView textView_UserName;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         user = new User();
-        user.setUserName("Ivan");
-        user.setUserLastName("Ivanov");
+        Bundle bundle = getArguments();
+        user = (User) bundle.getSerializable("user");// получили объект из списка пользовтелей-то на который указали
 
     }
     @Override

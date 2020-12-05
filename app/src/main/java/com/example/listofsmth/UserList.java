@@ -17,7 +17,7 @@ public class UserList {
     }
     private UserList(){
         users = new ArrayList();
-        for (int i = 0; i <100 ; i++) {
+        for (int i = 0; i <100 ; i++) {//создали рандомный список из 100 человек начиная с 0
             User user = new User();
             user.setUserName("Name"+i);
             user.setUserLastName("LastName"+i);
