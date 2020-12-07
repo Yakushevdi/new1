@@ -9,7 +9,10 @@ public class User implements Serializable {
     private UUID uuid;
 
     public User() {
-        this.uuid = UUID.randomUUID();
+        this(UUID.randomUUID()); //при создании нового
+    }
+    public User(UUID uuid){
+        this.uuid = uuid; //при изменении существующего
     }
 
     public String getUserName() {

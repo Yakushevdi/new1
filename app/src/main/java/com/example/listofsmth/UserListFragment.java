@@ -1,5 +1,6 @@
 package com.example.listofsmth;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -15,20 +17,28 @@ import java.util.List;
 public class UserListFragment extends Fragment {
     private RecyclerView userRecyclerView; //переменная ресайклер вью - отображение с выходом на экран нового элемента
     private UserAdapter userAdapter;
+    private Button openAddUserScreen;
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle savedInstanceState){//метод создается в момент создания отображения на экране
-        View view = layoutInflater.inflate(R.layout.fragment_user_list,viewGroup,false); //создаем переменную с типом данных вью - тк метод должен вернуть это тип данных. вкладываем какой интерфейс будет выводиьтся,
+        View view = layoutInflater.inflate(R.layout.fragment_user_list,viewGroup,false); //создаем переменную с типом данных вью - тк метод должен вернуть этот тип данных. вкладываем какой интерфейс будет выводиьтся,
         userRecyclerView = view.findViewById(R.id.userRecyclerView); //связываем переменную с интерфейсом по аналогии как привязываем кнопки(дали айди в описании интерфеса, на фрагменте или активити обозначили переменную и далее приравняли переменную и айди)
         userRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); //включает менеджер отображения для Интерфейска и выбираем построчное отображение элементов и указываем активность где менеджер будет работать
-
-        UserList userList = UserList.get();
+        openAddUserScreen =view.findViewById(R.id.openAddUserScreen);
+        UserList userList = UserList.get(getActivity());
         List<User> users = userList.getUsers();
         userAdapter = new UserAdapter(users);
         userRecyclerView.setAdapter(userAdapter);
+        openAddUserScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), AddUser.class));//тут прописать смену фрагмента
+            }
+        });
 
 
         return view;
+
 
     }
 
@@ -42,7 +52,7 @@ public class UserListFragment extends Fragment {
         }
         public void bind(User user){
             itemUser = user;
-            String userName = "Name "+user.getUserName()+" LastName "+ user.getUserLastName()+"\n_____________________";
+            String userName = "ИМЯ: "+user.getUserName()+"\n"+"ФАМИЛИЯ: "+ user.getUserLastName()+"\n_____________________";
             userItemTextView.setText(userName);
         }
         @Override
