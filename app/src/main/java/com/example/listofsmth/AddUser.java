@@ -15,7 +15,7 @@ public class AddUser extends AppCompatActivity {
     private EditText lastNameEditText;
 
 
-    @Override
+   /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
@@ -35,5 +35,5 @@ public class AddUser extends AppCompatActivity {
                 onBackPressed();
             }
         });
-    }
+    }*/
 }

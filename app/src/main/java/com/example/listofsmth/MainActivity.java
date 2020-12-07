@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart(){//проверить работает ли при фрагментах
         super.onStart();
-        Fragment fragment = new UserListFragment();//присвоили переменной фрагмент значение фрагмета (список пользователей фрагмент)
+        Fragment fragment = new UserListFragment();//присвоили переменной фрагмент значение фрагмета (список пользователей фрагмент) который не следующей строке отображается в главном экране
         fragmentManager.beginTransaction().replace(R.id.fragmentContainer,fragment,"main_screen").commit();//начинает отображение фрагмента на главной активити
 
     }
@@ -39,13 +39,24 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment,"main_screen").commit();
         }
     }
-    public static void changeFragment(View view, User user){//метод смены отображаемого фрагмента на то что задано
-        FragmentActivity activity =(FragmentActivity) view.getContext();
+    public static void changeFragment(View view, User user) {//метод смены отображаемого фрагмента на то что задано
+        FragmentActivity activity = (FragmentActivity) view.getContext();
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
         Fragment fragment = new UserFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("user", user);
         fragment.setArguments(bundle);
-        fragmentManager.beginTransaction().replace(R.id.fragmentContainer,fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
+    }
+
+    public static void changeFragment1(View view){//метод смены отображаемого фрагмента на то что задано
+        FragmentActivity activity =(FragmentActivity) view.getContext();
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
+        Fragment fragment2 = new AddUserFragment();
+        //Bundle bundle = new Bundle();
+        //bundle.putSerializable("user", user);
+        //fragment2.setArguments(bundle);
+        fragmentManager.beginTransaction().replace(R.id.fragmentContainer,fragment2).commit();
+
     }
 }

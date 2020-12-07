@@ -8,5 +8,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:layout_marginBottom="25dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editName"
+        android:hint="поменять имя"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editLastName"
+        android:hint="поменять фамилию"
+        android:layout_marginBottom="25dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ВНЕСТИ ИЗМЕНЕНИЯ"
+        android:id="@+id/updateBtn"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="удалить пользователя"
+        android:layout_marginTop="50dp"
+        android:id="@+id/deleteUserBtn"/>
 </LinearLayout>

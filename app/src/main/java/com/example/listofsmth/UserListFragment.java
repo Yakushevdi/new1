@@ -21,7 +21,7 @@ public class UserListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle savedInstanceState){//метод создается в момент создания отображения на экране
-        View view = layoutInflater.inflate(R.layout.fragment_user_list,viewGroup,false); //создаем переменную с типом данных вью - тк метод должен вернуть этот тип данных. вкладываем какой интерфейс будет выводиьтся,
+        View view = layoutInflater.inflate(R.layout.fragment_user_list,viewGroup,false); //создаем пременнную с типом данных вью, и указываем какой именно фрагмент будет отбражен на экране с помощью рвздыувания из указанного файла
         userRecyclerView = view.findViewById(R.id.userRecyclerView); //связываем переменную с интерфейсом по аналогии как привязываем кнопки(дали айди в описании интерфеса, на фрагменте или активити обозначили переменную и далее приравняли переменную и айди)
         userRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); //включает менеджер отображения для Интерфейска и выбираем построчное отображение элементов и указываем активность где менеджер будет работать
         openAddUserScreen =view.findViewById(R.id.openAddUserScreen);
@@ -30,36 +30,37 @@ public class UserListFragment extends Fragment {
         userAdapter = new UserAdapter(users);
         userRecyclerView.setAdapter(userAdapter);
         openAddUserScreen.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), AddUser.class));//тут прописать смену фрагмента
+                MainActivity.changeFragment1(view);
+                //startActivity(new Intent(getContext(), AddUser.class));//тут прописать смену фрагмента
             }
         });
-
-
         return view;
-
-
     }
 
     private class UserHolder extends RecyclerView.ViewHolder implements View.OnClickListener{ //создание элементов списка для отображение на Интерфейск ресйакл вью
-        private TextView userItemTextView;//переменная для элемента списка
+        private TextView textView_UserItem;//переменная для элемента списка
         private User itemUser;// переменная для полученния текущего пользователя
         public UserHolder (LayoutInflater inflater, ViewGroup viewGroup){
             super(inflater.inflate(R.layout.list_item_user,viewGroup,false));//передаем макет интерфейса юзерлист
-            userItemTextView = itemView.findViewById(R.id.textView_UserItem); // присваем развернутому макету интерфейса значение в холдере
+            textView_UserItem = itemView.findViewById(R.id.textView_UserItem); // присваем развернутому макету интерфейса значение в холдере
             itemView.setOnClickListener(this);     //-'элемент списка - ждет нажатия кнопки в этой вью
         }
         public void bind(User user){
             itemUser = user;
             String userName = "ИМЯ: "+user.getUserName()+"\n"+"ФАМИЛИЯ: "+ user.getUserLastName()+"\n_____________________";
-            userItemTextView.setText(userName);
+            textView_UserItem.setText(userName);
         }
+
         @Override
         public void onClick(View view) {
           MainActivity.changeFragment(view, itemUser);
-        }
+        }// смена фрегмента по щелчку на главной активности
     }
+
+
     private class UserAdapter extends RecyclerView.Adapter<UserHolder>{ //класс нужен для передачи Элементов созданных в держателе отображения в интерфейс ресайклер вью
         private List<User> users ;
         public UserAdapter(List <User> users){
